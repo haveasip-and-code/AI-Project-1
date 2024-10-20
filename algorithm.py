@@ -6,15 +6,11 @@ import time
 
 class Algorithm:
     def __init__(self):
-        self.initial = None
         self.goal = None
         self.input = input
         self.time = 0 
         self.memory = 0
         self.visited = set()
-
-    def getInitial(self):
-        return self.initial
 
     def loadInput(self, fileName, state):
         self.input = fileName
@@ -23,22 +19,22 @@ class Algorithm:
 
         weights = list(map(int, lines[0].strip().split()))
         state.grid = [list(line.rstrip()) for line in lines[1:]]
-        state.ares_pos = None
+        state.aresPos = None
         state.stones = [] 
         state.switches = []  
 
-        weight_index = 0  
+        weightIndex = 0  
         for i, row in enumerate(state.grid):
             for j, cell in enumerate(row):
                 if cell == '@':
-                    state.ares_pos = (i, j) 
+                    state.aresPos = (i, j) 
                 elif cell == '$':
-                    state.stones.append((i, j, weights[weight_index]))
-                    weight_index += 1
+                    state.stones.append((i, j, weights[weightIndex]))
+                    weightIndex += 1
                 elif cell == '*':
-                    state.stones.append((i, j, weights[weight_index]))
+                    state.stones.append((i, j, weights[weightIndex]))
                     state.switches.append((i, j)) 
-                    weight_index += 1
+                    weightIndex += 1
                 elif cell == '.':
                     state.switches.append((i, j)) 
         self.initial = state
@@ -52,52 +48,52 @@ class Algorithm:
 
 
 class BFS(Algorithm):
-    alg_name = "BFS"
+    algName = "BFS"
     def __init__(self):
         super().__init__()
     
-    def BFSSearch(self,grid, aresPos, stones, switches):
+    def BFSSearch(self,state):
         tracemalloc.start()  
-        start_time = time.time()
-        initialState = State(aresPos, stones, 0, "")
+        startTime = time.time()
+        initialState = State(state.grid, state.switches, state.aresPos, state.stones, 0, "")
         self.goal = initialState
-        if (initialState.checkGoalState(switches)):
-            end_time = time.time()
+        if (initialState.checkGoalState()):
+            endTime = time.time()
             current, peak = tracemalloc.get_traced_memory()
             tracemalloc.stop()
-            self.time = (end_time - start_time) * 1000  # ms
+            self.time = (endTime - startTime) * 1000  # ms
             self.memory = peak / 1024
             return self.goal
         queue = deque()
         queue.append(initialState)
-        self.visited.add((aresPos, tuple(initialState.stones)))
+        self.visited.add((initialState.aresPos, tuple(initialState.stones)))
 
         while queue:
             currentState = queue.popleft()
-            for newState in currentState.expandState( grid):
-                if (newState.checkGoalState( switches)):
+            for newState in currentState.expandState():
+                if (newState.checkGoalState()):
                     self.goal = newState
-                    end_time = time.time()
+                    endTime = time.time()
                     current, peak = tracemalloc.get_traced_memory()
                     tracemalloc.stop()
-                    self.time = (end_time - start_time) * 1000  # ms
+                    self.time = (endTime - startTime) * 1000  # ms
                     self.memory = peak / 1024
                     return self.goal
                 if (newState.aresPos, tuple(newState.stones)) in self.visited:
                     continue
                 queue.append(newState)
                 self.visited.add((newState.aresPos, tuple(newState.stones)))
-        end_time = time.time()
+        endTime = time.time()
         current, peak = tracemalloc.get_traced_memory()
         tracemalloc.stop()
-        self.time = (end_time - start_time) * 1000  # ms
+        self.time = (endTime - startTime) * 1000  # ms
         self.memory = peak / 1024
         return None
     
     def displayStats(self):
         fileName = "output" + self.input[5:]
         with open(fileName, "a") as file:
-            file.write(self.alg_name + "\n")
+            file.write(self.algName + "\n")
             file.write("Steps: " + str(self.goal.displaySteps()) + ", ")
             file.write("Weight: " + str(self.goal.displayWeight()) + ", ")
         Algorithm.displayStats(self)
@@ -107,7 +103,3 @@ class BFS(Algorithm):
         else:
             with open(fileName, "a") as file:
                 file.write("No solution found\n")
-                
-
-
-        
