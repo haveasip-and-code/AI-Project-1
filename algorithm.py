@@ -22,6 +22,7 @@ class Algorithm:
         state.aresPos = None
         state.stones = [] 
         state.switches = []  
+        state.parent = None
 
         weightIndex = 0  
         for i, row in enumerate(state.grid):
@@ -55,7 +56,7 @@ class BFS(Algorithm):
     def BFSSearch(self,state):
         tracemalloc.start()  
         startTime = time.time()
-        initialState = State(state.grid, state.switches, state.aresPos, state.stones, 0, "")
+        initialState = State(state.grid, state.switches, state.aresPos, state.stones, 0, "", state.parent)
         self.goal = initialState
         if (initialState.checkGoalState()):
             endTime = time.time()
@@ -88,6 +89,7 @@ class BFS(Algorithm):
         tracemalloc.stop()
         self.time = (endTime - startTime) * 1000  # ms
         self.memory = peak / 1024
+        self.goal = None
         return None
     
     def displayStats(self):
@@ -103,3 +105,9 @@ class BFS(Algorithm):
         else:
             with open(fileName, "a") as file:
                 file.write("No solution found\n")
+    
+    def tracePath(self, stateList):
+        currentState = self.goal
+        while (currentState != None):
+            stateList.append(currentState)
+            currentState = currentState.parent
