@@ -40,18 +40,7 @@ class Window:
         # self.master.resizable(width=False, height=False)
        
     def start(self):
-        alg = self.algOption.get()
-        input = self.inputOption.get()
-        BFS1 = algorithm.BFS()
-        self.initial = state.State()
-        BFS1.loadInput("input-0" + input + ".txt", initial)
-        BFS1.BFSSearch(initial.grid, initial.ares_pos, initial.stones, initial.switches)
-        BFS1.displayStats()
-        self.stepsLabel.config(text = str(BFS1.steps))
-        self.weightLabel.config(text = str(BFS1.weight))
-        #I want to visualise the path found by the bfs algorithm
-
-        self.drawGrid(initial.grid)
+        print("Start button pressed")
 
     def restart(self):
         
