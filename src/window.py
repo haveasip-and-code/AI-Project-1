@@ -1,4 +1,5 @@
 import tkinter as tk
+from tkinter import messagebox
 import state
 import algorithm as algorithm
 from maze import Maze
@@ -11,8 +12,9 @@ class Window:
         self.master = master
         self.initial = None
         self.master.geometry("800x600")
-        self.width = 400
-        self.height = 200
+
+        self.width = 700
+        self.height = 500
         self.master.title("Maze Escape")
 
         self.canvas = tk.Canvas(self.master, width = self.width, height = self.height, background="black")
@@ -23,17 +25,15 @@ class Window:
         self.stepsLabel.grid(row=4,column=0,sticky=tk.W)
         self.weightLabel.grid(row=4,column=1,sticky=tk.W)
         
-        inputOptions = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
+
+        inputOptions = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10']
         self.inputOption = tk.StringVar(self.master)
         self.inputOption.set(inputOptions[0])
         self.inputMenu = tk.OptionMenu(self.master, self.inputOption, *inputOptions)
         self.inputMenu.grid(row=0,column=0,sticky=tk.W)
 
-        self.startButton = tk.Button(self.master, text='Start', command=self.start)
+        self.startButton = tk.Button(self.master, text='Start', relief="raised",command=self.start)
         self.startButton.grid(row=1,column=0,sticky=tk.N)
-
-        self.restartButton = tk.Button(self.master, text='Restart', command=self.restart)
-        self.restartButton.grid(row=1,column=0,sticky=tk.SE)
 
         algOptions = ['BFS', 'DFS', 'UCS', 'A*']
         self.algOption = tk.StringVar(self.master)
@@ -44,12 +44,19 @@ class Window:
         # self.master.resizable(width=False, height=False)
        
     def start(self):
-        print("Start button pressed")
 
-    def restart(self):
-        print("Restart button pressed")
+        self.stateList = []
+        algorithm = self.algOption.get()
+        input_file = "input/input-" + self.inputOption.get() + ".txt"
+        self.maze.search(input_file, algorithm, self.stateList)
+        # Start drawing the states
+        if (len(self.stateList) > 0):
+            self.master.after(3000, self.drawStates, len(self.stateList) - 1) 
+        else:
+            tk.messagebox.showinfo("No solution found", "No solution found for the given input file and algorithm")
 
-    def drawGrid(self, grid):
+
+    def drawGrid(self, grid, stones):
         self.canvas.delete("all")
         self.cellWidth = self.width / len(grid[0])
         self.cellHeight = self.height / len(grid)
@@ -67,21 +74,27 @@ class Window:
                     self.canvas.create_rectangle(x1, y1, x2-10, y2-10, fill="white", outline="white")
                 elif cell == '$':
                     self.canvas.create_oval(x1, y1, x2-10, y2-10, fill="blue", outline="blue")
+                    for x, y, weight in stones:
+                        if (i, j) == (x, y):
+                            self.canvas.create_text(x1+15, y1+15, text=str(weight), fill="white")
+                            break
                 elif cell == '*':
                     self.canvas.create_rectangle(x1, y1, x2, y2, fill="pink", outline="pink")
+                    for x, y, weight in stones:
+                        if (i, j) == (x, y):
+                            self.canvas.create_text(x1+10, y1+10, text=str(weight), fill="black")
+                            break
+
         self.master.update_idletasks()
 
     def drawStates(self, index):
         if index >= 0:
-            self.drawGrid(self.stateList[index].grid)
+            self.drawGrid(self.stateList[index].grid, self.stateList[index].stones)
+
             # Schedule the next state after 1 second
             self.master.after(1000, self.drawStates, index - 1)
     
     def run(self):
-        self.maze.search("../input/input-01.txt", "UCS", self.stateList)
-
-        # Start drawing the states
-        self.master.after(5000, self.drawStates, len(self.stateList) - 1)
         self.master.mainloop()
     
 
