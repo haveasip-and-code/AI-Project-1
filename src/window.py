@@ -1,9 +1,13 @@
 import tkinter as tk
 import state
-import algorithm
+import algorithm as algorithm
+from maze import Maze
 
 class Window:
     def __init__(self, master):
+        self.stateList = [] 
+        self.maze = Maze()
+
         self.master = master
         self.initial = None
         self.master.geometry("800x600")
@@ -43,19 +47,18 @@ class Window:
         print("Start button pressed")
 
     def restart(self):
-        
         print("Restart button pressed")
 
     def drawGrid(self, grid):
         self.canvas.delete("all")
-        self.cellwidth = self.width / len(grid[0])
-        self.cellheight = self.height / len(grid)
+        self.cellWidth = self.width / len(grid[0])
+        self.cellHeight = self.height / len(grid)
         for i, row in enumerate(grid):
             for j, cell in enumerate(row):
-                x1 = j * self.cellwidth
-                y1 = i * self.cellheight
-                x2 = x1 + self.cellwidth
-                y2 = y1 + self.cellheight
+                x1 = j * self.cellWidth
+                y1 = i * self.cellHeight
+                x2 = x1 + self.cellWidth
+                y2 = y1 + self.cellHeight
                 if cell == '#':
                     self.canvas.create_rectangle(x1, y1, x2, y2, fill="brown", outline="black")
                 elif cell == '.':
@@ -68,8 +71,18 @@ class Window:
                     self.canvas.create_rectangle(x1, y1, x2, y2, fill="pink", outline="pink")
         self.master.update_idletasks()
 
-
+    def drawStates(self, index):
+        if index >= 0:
+            self.drawGrid(self.stateList[index].grid)
+            # Schedule the next state after 1 second
+            self.master.after(1000, self.drawStates, index - 1)
     
+    def run(self):
+        self.maze.search("input/input-01.txt", "BFS", self.stateList)
+
+        # Start drawing the states
+        self.master.after(5000, self.drawStates, len(self.stateList) - 1)
+        self.master.mainloop()
     
 
     

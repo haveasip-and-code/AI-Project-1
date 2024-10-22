@@ -10,7 +10,7 @@ class State:
         self.parent = parent
 
     def checkGoalState(self):
-        for (x,y,weight) in self.stones:
+        for (x, y, weight) in self.stones:
             if (x,y) not in self.switches:
                 return False
         return True
@@ -40,14 +40,7 @@ class State:
                 new_stones = self.stones
                 action = action[2]
             newGrid = self.updateGrid(new_pos, new_stones)
-            yield State(newGrid, self.switches, new_pos, new_stones, self.cost + self.actionCost(new_pos), self.path + action, state)
-
-    def actionCost(self, new_pos):
-        if (new_pos in [(x, y) for x, y, weight in self.stones]):
-            for x, y, weight in self.stones:
-                if (x, y) == new_pos:
-                    return 1 + weight
-        return 1
+            yield State(newGrid, self.switches, new_pos, new_stones, self.cost + self.getActionCost(new_pos), self.path + action, state)
     
     def updateGrid(self,new_pos, new_stones):
         new_grid =  [list(row) for row in self.grid]
@@ -67,33 +60,40 @@ class State:
                 new_grid[x][y] = '*'
         new_grid = tuple(tuple(row) for row in new_grid)
         return new_grid
+    
+    def getActionCost(self, new_pos):
+        if (new_pos in [(x, y) for x, y, weight in self.stones]):
+            for x, y, weight in self.stones:
+                if (x, y) == new_pos:
+                    return 1 + weight
+        return 1
 
-    def displayWeight(self):
+    def getWeight(self):
         if self == None:
             return 0
         return self.cost - len(self.path)
     
-    def displayPath(self):
+    def getPath(self):
         if self == None:
             return ""
         return self.path
     
-    def displaySteps(self):
+    def getSteps(self):
         if self == None:
             return 0
         return len(self.path)
     
-    def displayCost(self):
+    def getCost(self):
         if self == None:
             return 0
         return self.cost
 
-    def displayStones(self):
+    def getStones(self):
         if self == None:
             return []
         return self.stones
     
-    def displayPos(self):
+    def getPos(self):
         if self == None:
             return (0,0)
         return self.aresPos
