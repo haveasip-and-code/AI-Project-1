@@ -38,4 +38,5 @@ class Algorithm:
             with open(fileName, "a") as file:
                 file.write("No solution found\n")
 
-                
+
+
