@@ -1,5 +1,6 @@
 import tkinter as tk
-from tkinter import messagebox
+from tkinter import messagebox, PhotoImage
+from PIL import Image, ImageTk
 import state
 import algorithm as algorithm
 from maze import Maze
@@ -16,10 +17,6 @@ class Window:
         self.width = 900
         self.height = 500
         self.master.title("Maze Escape")
-
-        self.ares = tk.PhotoImage(file="images/ares.png")
-        self.stone = tk.PhotoImage(file="images/stone.png")
-        self.switch = tk.PhotoImage(file="images/switch.png")
 
         self.canvas = tk.Canvas(self.master, width = self.width, height = self.height, background="black")
         self.canvas.grid(row=2,column=0, sticky=tk.S)
@@ -77,6 +74,11 @@ class Window:
         else:
             self.cellWidth = self.cellHeight
 
+        self.ares = resize_image("images/ares.png", self.cellWidth, self.cellHeight)
+        self.stone = resize_image("images/stone.png", self.cellWidth, self.cellHeight)
+        self.switch = resize_image("images/switch.png", self.cellWidth, self.cellHeight)
+        self.finish = resize_image("images/finish.png", self.cellWidth, self.cellHeight)
+
         for i, row in enumerate(grid):
             for j, cell in enumerate(row):
                 x1 = j * self.cellWidth
@@ -89,17 +91,20 @@ class Window:
                 if cell == '#':
                     self.canvas.create_rectangle(x1, y1, x2, y2, fill="brown", outline="black")
                 elif cell == '.':
-                    self.canvas.create_rectangle(x1, y1, x2, y2, fill="yellow", outline="yellow")
+                    self.canvas.create_image(x1, y1, image=self.switch, anchor='nw')
+                    # self.canvas.create_rectangle(x1, y1, x2, y2, fill="yellow", outline="yellow")
                 elif cell == '@':
-                    self.canvas.create_rectangle(x1, y1, x2-10, y2-10, fill="white", outline="white")
+                    self.canvas.create_image(x1, y1, image=self.ares, anchor='nw')
+                    # self.canvas.create_rectangle(x1, y1, x2-10, y2-10, fill="white", outline="white")
                 elif cell == '$':
-                    self.canvas.create_oval(x1, y1, x2-10, y2-10, fill="blue", outline="blue")
+                    self.canvas.create_image(x1, y1, image=self.stone, anchor='nw')
+                    # self.canvas.create_oval(x1, y1, x2-10, y2-10, fill="blue", outline="blue")
                     for x, y, weight in stones:
                         if (i, j) == (x, y):
-                            self.canvas.create_text(x1+15, y1+15, text=str(weight), fill="white")
+                            self.canvas.create_text(x1 + 35, y1 + 35, text=str(weight), fill="black", font=("Arial", 24))
                             break
                 elif cell == '*':
-                    self.canvas.create_rectangle(x1, y1, x2, y2, fill="pink", outline="pink")
+                    self.canvas.create_image(x1, y1, image=self.finish, anchor='nw')
                     for x, y, weight in stones:
                         if (i, j) == (x, y):
                             self.canvas.create_text(x1+10, y1+10, text=str(weight), fill="black")
@@ -117,7 +122,11 @@ class Window:
     
     def run(self):
         self.master.mainloop()
-    
+
+def resize_image(image_path, width, height):
+    img = Image.open(image_path)
+    resized_img = img.resize((int(width), int(height)), Image.Resampling.LANCZOS)
+    return ImageTk.PhotoImage(resized_img)
 
     
 

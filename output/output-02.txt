@@ -1,3 +1,9 @@
 BFS
 Steps: 4, Weight: 7, Nodes: 11, Time (ms): 0.5300045013427734, Memory (MB): 9.1318359375
 rrUL
+BFS
+Steps: 4, Cost: 7, Nodes: 11, Time (ms): 1.069784164428711, Memory (MB): 9.1318359375
+rrUL
+UCS
+Steps: 4, Cost: 7, Nodes: 14, Time (ms): 1.2958049774169922, Memory (MB): 5.8056640625
+rrUL

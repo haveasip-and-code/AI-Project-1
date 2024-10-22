@@ -40,3 +40,39 @@ uLulDrrRRRRRRurD
 BFS
 Steps: 16, Weight: 711, Nodes: 12015, Time (ms): 1411.2324714660645, Memory (MB): 11365.6904296875
 uLulDrrRRRRRRurD
+BFS
+Steps: 16, Cost: 711, Nodes: 12015, Time (ms): 2966.747045516968, Memory (MB): 11366.1279296875
+uLulDrrRRRRRRurD
+BFS
+Steps: 16, Cost: 711, Nodes: 12015, Time (ms): 3742.248773574829, Memory (MB): 11366.1279296875
+uLulDrrRRRRRRurD
+UCS
+Steps: 24, Cost: 429, Nodes: 36906, Time (ms): 13839.917659759521, Memory (MB): 10310.2099609375
+lluRurrDrdLLLuRRRRRRRurD
+UCS
+Steps: 24, Cost: 429, Nodes: 36906, Time (ms): 15227.154016494751, Memory (MB): 10330.3974609375
+lluRurrDrdLLLuRRRRRRRurD
+BFS
+Steps: 16, Cost: 711, Nodes: 12015, Time (ms): 3391.3414478302, Memory (MB): 11366.1279296875
+uLulDrrRRRRRRurD
+UCS
+Steps: 24, Cost: 429, Nodes: 36906, Time (ms): 12402.965307235718, Memory (MB): 10310.2099609375
+lluRurrDrdLLLuRRRRRRRurD
+BFS
+Steps: 16, Cost: 711, Nodes: 12015, Time (ms): 3149.25479888916, Memory (MB): 11366.1279296875
+uLulDrrRRRRRRurD
+BFS
+Steps: 16, Cost: 711, Nodes: 12015, Time (ms): 3197.969913482666, Memory (MB): 11366.1279296875
+uLulDrrRRRRRRurD
+BFS
+Steps: 16, Cost: 711, Nodes: 12015, Time (ms): 3182.251214981079, Memory (MB): 11366.1279296875
+uLulDrrRRRRRRurD
+BFS
+Steps: 16, Cost: 711, Nodes: 12015, Time (ms): 3191.559076309204, Memory (MB): 11366.1279296875
+uLulDrrRRRRRRurD
+BFS
+Steps: 16, Cost: 711, Nodes: 12015, Time (ms): 3339.585065841675, Memory (MB): 11366.1279296875
+uLulDrrRRRRRRurD
+BFS
+Steps: 16, Cost: 711, Nodes: 12015, Time (ms): 3331.437587738037, Memory (MB): 11366.1279296875
+uLulDrrRRRRRRurD
