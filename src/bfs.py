@@ -29,7 +29,7 @@ class BFS(Algorithm):
         # Initialize the queue and add the initial state to it
         queue = deque()
         queue.append(initialState)
-        self.visited.add((initialState.aresPos, tuple(initialState.stones)))
+        self.visited[((initialState.aresPos, tuple(initialState.stones)))] = 0
 
         # Start the BFS algorithm
         while queue:
@@ -46,7 +46,7 @@ class BFS(Algorithm):
                 if (newState.aresPos, tuple(newState.stones)) in self.visited:
                     continue
                 queue.append(newState)
-                self.visited.add((newState.aresPos, tuple(newState.stones)))
+                self.visited[((newState.aresPos, tuple(newState.stones)))]=0
 
         # Stop the timer and memory tracker
         endTime = time.time()

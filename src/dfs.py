@@ -29,7 +29,8 @@ class DFS(Algorithm):
         # Initialize the queue and add the initial state to it
         stack = deque()
         stack.append(initialState)
-        self.visited.add((initialState.aresPos, tuple(initialState.stones)))
+        self.visited[(initialState.aresPos, tuple(initialState.stones))] = initialState.getCost()
+
 
         # Start the DFS algorithm
         while stack:
@@ -48,7 +49,8 @@ class DFS(Algorithm):
                 if (newState.aresPos, tuple(newState.stones)) in self.visited:
                     continue
                 stack.append(newState)
-                self.visited.add((newState.aresPos, tuple(newState.stones)))
+                self.visited[(newState.aresPos, tuple(newState.stones))] = newState.getCost()
+
 
 
         # Stop the timer and memory tracker

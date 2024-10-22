@@ -21,9 +21,9 @@ class Window:
         self.canvas.grid(row=2,column=0, sticky=tk.S)
 
         self.stepsLabel = tk.Label(self.master, text = '0', font = ('Arial', 20))
-        self.weightLabel = tk.Label(self.master, text = '0', font = ('Arial', 20))
+        self.costLabel = tk.Label(self.master, text = '0', font = ('Arial', 20))
         self.stepsLabel.grid(row=4,column=0,sticky=tk.W)
-        self.weightLabel.grid(row=4,column=1,sticky=tk.W)
+        self.costLabel.grid(row=4,column=1,sticky=tk.W)
         
 
         inputOptions = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10']
@@ -44,7 +44,6 @@ class Window:
         # self.master.resizable(width=False, height=False)
        
     def start(self):
-
         self.stateList = []
         algorithm = self.algOption.get()
         input_file = "input/input-" + self.inputOption.get() + ".txt"
@@ -54,7 +53,6 @@ class Window:
             self.master.after(3000, self.drawStates, len(self.stateList) - 1) 
         else:
             tk.messagebox.showinfo("No solution found", "No solution found for the given input file and algorithm")
-
 
     def drawGrid(self, grid, stones):
         self.canvas.delete("all")
@@ -66,6 +64,9 @@ class Window:
                 y1 = i * self.cellHeight
                 x2 = x1 + self.cellWidth
                 y2 = y1 + self.cellHeight
+                if cell == '+':
+                    self.canvas.create_rectangle(x1, y1, x2, y2, fill="yellow", outline="yellow")
+                    self.canvas.create_rectangle(x1, y1, x2-10, y2-10, fill="white", outline="white")
                 if cell == '#':
                     self.canvas.create_rectangle(x1, y1, x2, y2, fill="brown", outline="black")
                 elif cell == '.':
@@ -90,7 +91,8 @@ class Window:
     def drawStates(self, index):
         if index >= 0:
             self.drawGrid(self.stateList[index].grid, self.stateList[index].stones)
-
+            self.stepsLabel.config(text = str(self.stateList[index].getSteps()))
+            self.costLabel.config(text = str(self.stateList[index].getCost()))
             # Schedule the next state after 1 second
             self.master.after(1000, self.drawStates, index - 1)
     
