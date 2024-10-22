@@ -14,7 +14,7 @@ class Aster(Algorithm):
         return abs(x1 - x2) + abs(y1 - y2)
 
     def heuristic(self, state):
-        h = 0
+        h = 2**31 - 1
         # For each stone, calculate its weighted distance to the nearest switch
         for stone_idx, (x, y, weight) in enumerate(state.stones):
             for switch in state.switches:

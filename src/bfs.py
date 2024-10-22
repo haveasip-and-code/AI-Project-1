@@ -55,5 +55,5 @@ class BFS(Algorithm):
         self.time = (endTime - startTime) * 1000  # ms
         self.memory = peak / 1024
         self.goal = None
-        return None
+        return self.goal
         
