@@ -37,6 +37,7 @@ class Maze:
     def search(self, filename: str, algName: str, stateList: list):
         # Create an instance of State class
         initial = State()
+        
         # Load input file
         self.loadInput(filename, initial)
 
