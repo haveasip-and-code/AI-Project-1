@@ -47,12 +47,16 @@ class Window:
         self.stateList = []
         algorithm = self.algOption.get()
         input_file = "input/input-" + self.inputOption.get() + ".txt"
+        self.initial = state.State()
+        self.initial = self.maze.loadInput(input_file, self.initial)
+        self.drawGrid(self.initial.grid, self.initial.stones)
         self.maze.search(input_file, algorithm, self.stateList)
         # Start drawing the states
         if (len(self.stateList) > 0):
-            self.master.after(3000, self.drawStates, len(self.stateList) - 1) 
+            tk.messagebox.showinfo("Solution found", "Solution found")
+            self.master.after(3000, self.drawStates, len(self.stateList) - 2) 
         else:
-            tk.messagebox.showinfo("No solution found", "No solution found for the given input file and algorithm")
+            tk.messagebox.showinfo("No solution found", "No solution found")
 
     def drawGrid(self, grid, stones):
         self.canvas.delete("all")
