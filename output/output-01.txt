@@ -1,0 +1,9 @@
+UCS
+Steps: 24, Weight: 405, Nodes: 36906, Time (ms): 0, Memory (MB): 0
+lluRurrDrdLLLuRRRRRRRurD
+UCS
+Steps: 24, Weight: 405, Nodes: 36906, Time (ms): 6478.412628173828, Memory (MB): 10750.3349609375
+lluRurrDrdLLLuRRRRRRRurD
+UCS
+Steps: 24, Weight: 405, Nodes: 36906, Time (ms): 6152.1642208099365, Memory (MB): 10320.7724609375
+lluRurrDrdLLLuRRRRRRRurD
