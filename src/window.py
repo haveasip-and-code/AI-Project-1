@@ -78,7 +78,7 @@ class Window:
             self.master.after(1000, self.drawStates, index - 1)
     
     def run(self):
-        self.maze.search("input/input-01.txt", "BFS", self.stateList)
+        self.maze.search("../input/input-01.txt", "UCS", self.stateList)
 
         # Start drawing the states
         self.master.after(5000, self.drawStates, len(self.stateList) - 1)
