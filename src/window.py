@@ -11,9 +11,9 @@ class Window:
 
         self.master = master
         self.initial = None
-        self.master.geometry("800x600")
+        self.master.geometry("1000x600")
 
-        self.width = 700
+        self.width = 900
         self.height = 500
         self.master.title("Maze Escape")
 
@@ -57,7 +57,18 @@ class Window:
     def drawGrid(self, grid, stones):
         self.canvas.delete("all")
         self.cellWidth = self.width / len(grid[0])
+        if self.cellWidth > 80:
+            self.cellWidth = 80
+
         self.cellHeight = self.height / len(grid)
+        if self.cellHeight > 80:
+            self.cellHeight = 80
+
+        if self.cellWidth < self.cellHeight:
+            self.cellHeight = self.cellWidth
+        else:
+            self.cellWidth = self.cellHeight
+
         for i, row in enumerate(grid):
             for j, cell in enumerate(row):
                 x1 = j * self.cellWidth
