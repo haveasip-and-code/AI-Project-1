@@ -4,3 +4,39 @@ uLulDrrRRRRRRurD
 A*
 Steps: 25, Weight: 430, Nodes: 27780, Time (ms): 3093.806743621826, Memory (MB): 9383.5244140625
 uulDldRRRRRRRRlllulLLLulD
+UCS
+Steps: 24, Weight: 429, Nodes: 36906, Time (ms): 6250.694990158081, Memory (MB): 10749.0458984375
+lluRurrDrdLLLuRRRRRRRurD
+UCS
+Steps: 24, Weight: 429, Nodes: 36906, Time (ms): 5776.146173477173, Memory (MB): 10320.7724609375
+lluRurrDrdLLLuRRRRRRRurD
+UCS
+Steps: 24, Weight: 429, Nodes: 36906, Time (ms): 5873.482465744019, Memory (MB): 10365.4599609375
+lluRurrDrdLLLuRRRRRRRurD
+UCS
+Steps: 24, Weight: 429, Nodes: 36906, Time (ms): 6025.032997131348, Memory (MB): 10272.5849609375
+lluRurrDrdLLLuRRRRRRRurD
+UCS
+Steps: 24, Weight: 429, Nodes: 36906, Time (ms): 6024.266481399536, Memory (MB): 10750.9365234375
+lluRurrDrdLLLuRRRRRRRurD
+BFS
+Steps: 16, Weight: 711, Nodes: 12015, Time (ms): 1721.4901447296143, Memory (MB): 10936.1748046875
+uLulDrrRRRRRRurD
+UCS
+Steps: 24, Weight: 429, Nodes: 36906, Time (ms): 5817.251205444336, Memory (MB): 10750.9365234375
+lluRurrDrdLLLuRRRRRRRurD
+UCS
+Steps: 24, Weight: 429, Nodes: 36906, Time (ms): 5937.878608703613, Memory (MB): 10750.9365234375
+lluRurrDrdLLLuRRRRRRRurD
+BFS
+Steps: 16, Weight: 711, Nodes: 12015, Time (ms): 1371.2778091430664, Memory (MB): 11365.6904296875
+uLulDrrRRRRRRurD
+BFS
+Steps: 16, Weight: 711, Nodes: 12015, Time (ms): 1480.1156520843506, Memory (MB): 11365.6904296875
+uLulDrrRRRRRRurD
+BFS
+Steps: 16, Weight: 711, Nodes: 12015, Time (ms): 1438.86137008667, Memory (MB): 11365.6904296875
+uLulDrrRRRRRRurD
+BFS
+Steps: 16, Weight: 711, Nodes: 12015, Time (ms): 1411.2324714660645, Memory (MB): 11365.6904296875
+uLulDrrRRRRRRurD

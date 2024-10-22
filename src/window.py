@@ -17,6 +17,10 @@ class Window:
         self.height = 500
         self.master.title("Maze Escape")
 
+        self.ares = tk.PhotoImage(file="images/ares.png")
+        self.stone = tk.PhotoImage(file="images/stone.png")
+        self.switch = tk.PhotoImage(file="images/switch.png")
+
         self.canvas = tk.Canvas(self.master, width = self.width, height = self.height, background="black")
         self.canvas.grid(row=2,column=0, sticky=tk.S)
 
