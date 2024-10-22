@@ -1,12 +1,6 @@
-UCS
-Steps: 24, Weight: 429, Nodes: 36906, Time (ms): 0, Memory (MB): 0
-lluRurrDrdLLLuRRRRRRRurD
+BFS
+Steps: 16, Weight: 711, Nodes: 12015, Time (ms): 938.4579658508301, Memory (MB): 11365.6826171875
+uLulDrrRRRRRRurD
 A*
-Steps: 28, Weight: 433, Nodes: 254, Time (ms): 27.436017990112305, Memory (MB): 81.6904296875
-uurDrdLLLruulldRurDldRRRRRRR
-A*
-Steps: 25, Weight: 430, Nodes: 27780, Time (ms): 3084.33198928833, Memory (MB): 10006.4384765625
-uulDldRRRRRRRRlllulLLLulD
-A*
-Steps: 25, Weight: 430, Nodes: 27780, Time (ms): 2947.91579246521, Memory (MB): 9339.0869140625
+Steps: 25, Weight: 430, Nodes: 27780, Time (ms): 3093.806743621826, Memory (MB): 9383.5244140625
 uulDldRRRRRRRRlllulLLLulD

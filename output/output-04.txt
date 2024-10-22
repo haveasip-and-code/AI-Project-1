@@ -1,0 +1,9 @@
+BFS
+Steps: 22, Weight: 807, Nodes: 215344, Time (ms): 16718.37592124939, Memory (MB): 213528.00390625
+uLulDrrRRRurDRlldRRRUU
+BFS
+Steps: 22, Weight: 807, Nodes: 215344, Time (ms): 17231.659173965454, Memory (MB): 212746.95703125
+uLulDrrRRRurDRlldRRRUU
+BFS
+Steps: 22, Weight: 807, Nodes: 215344, Time (ms): 16809.839963912964, Memory (MB): 212747.09765625
+uLulDrrRRRurDRlldRRRUU
