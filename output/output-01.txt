@@ -1,9 +1,12 @@
 UCS
-Steps: 24, Weight: 405, Nodes: 36906, Time (ms): 0, Memory (MB): 0
+Steps: 24, Weight: 429, Nodes: 36906, Time (ms): 0, Memory (MB): 0
 lluRurrDrdLLLuRRRRRRRurD
-UCS
-Steps: 24, Weight: 405, Nodes: 36906, Time (ms): 6478.412628173828, Memory (MB): 10750.3349609375
-lluRurrDrdLLLuRRRRRRRurD
-UCS
-Steps: 24, Weight: 405, Nodes: 36906, Time (ms): 6152.1642208099365, Memory (MB): 10320.7724609375
-lluRurrDrdLLLuRRRRRRRurD
+A*
+Steps: 28, Weight: 433, Nodes: 254, Time (ms): 27.436017990112305, Memory (MB): 81.6904296875
+uurDrdLLLruulldRurDldRRRRRRR
+A*
+Steps: 25, Weight: 430, Nodes: 27780, Time (ms): 3084.33198928833, Memory (MB): 10006.4384765625
+uulDldRRRRRRRRlllulLLLulD
+A*
+Steps: 25, Weight: 430, Nodes: 27780, Time (ms): 2947.91579246521, Memory (MB): 9339.0869140625
+uulDldRRRRRRRRlllulLLLulD

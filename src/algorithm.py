@@ -29,7 +29,7 @@ class Algorithm:
                 file.write("Weight: 0, ")
             else:
                 file.write("Steps: " + str(self.goal.getSteps()) + ", ")
-                file.write("Weight: " + str(self.goal.getWeight()) + ", ")
+                file.write("Weight: " + str(self.goal.getCost()) + ", ")
 
 
             file.write("Nodes: " + str(len(self.visited)) + ", ")
