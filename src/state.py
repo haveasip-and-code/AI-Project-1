@@ -9,6 +9,9 @@ class State:
         self.path = path
         self.parent = parent
 
+    def __lt__(self, other):
+        return self.getCost() < other.getCost()
+      
     def checkGoalState(self):
         for (x, y, weight) in self.stones:
             if (x,y) not in self.switches:
