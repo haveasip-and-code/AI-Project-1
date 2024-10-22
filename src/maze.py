@@ -1,5 +1,6 @@
 from mazeSolverContext import MazeSolverContext
 from bfs import BFS
+from dfs import DFS
 from ucs import UCS
 from state import State
 from aster import Aster
@@ -46,8 +47,8 @@ class Maze:
         # Create an instance of Search class
         if algName == "BFS":
             self._mazeSolverContext.setStrategy(BFS(algName))
-        # elif algName == "DFS":
-        #    self._mazeSolverContext.setStrategy(DFS(algName))
+        elif algName == "DFS":
+           self._mazeSolverContext.setStrategy(DFS(algName))
         elif algName == "UCS":
             self._mazeSolverContext.setStrategy(UCS(algName))
         elif algName == "A*":
