@@ -2,7 +2,7 @@ from abc import abstractmethod
 
 class Algorithm:
     def __init__(self, algName: str):
-        self.visited = set()
+        self.visited = {}
 
         self.time = 0
         self.memory = 0
@@ -21,7 +21,7 @@ class Algorithm:
 
     def displayStats(self, input_file: str) -> None:
         # Write the stats to the output file
-        fileName = "output/output" + input_file[11:]
+        fileName = "../output/output" + input_file[11:]
         with open(fileName, "a") as file:
             file.write(self.algName + "\n")
             if (self.goal == None):
