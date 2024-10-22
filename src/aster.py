@@ -20,9 +20,7 @@ class Aster(Algorithm):
         h = 0
         # For each stone, calculate its weighted distance to the nearest switch
         for stone_idx, (x, y, weight) in enumerate(state.stones):
-            h += min(self.manhattan_distance((x, y), switch) for switch in state.switches) * weight
-        # Include the distance from Ares to the nearest stone (if pushing is needed)
-        h += min(self.manhattan_distance(state.aresPos, (x, y)) for stone_idx, (x, y, weight) in enumerate(state.stones))
+            h += min(self.manhattan_distance(state.aresPos, (x, y)) + self.manhattan_distance((x, y), switch) * weight for switch in state.switches)
         return h
 
     def solve(self, state):
@@ -45,8 +43,8 @@ class Aster(Algorithm):
         
         # Initialize the priority queue and add the initial state to it
         queue = []
-        heappush(queue, (self.heuristic(initialState), initialState))
-        self.visited.add((initialState.aresPos, tuple(initialState.stones)))
+        heappush(queue, (self.heuristic(initialState) + initialState.getCost(), initialState))
+        self.visited[(initialState.aresPos, tuple(initialState.stones))] = 0
 
         # Start the A* algorithm
         while queue:
@@ -63,10 +61,10 @@ class Aster(Algorithm):
                     return self.goal
                 
                 # Check if the state has been visited before
-                if (newState.aresPos, tuple(newState.stones)) in self.visited:
+                if (newState.aresPos, tuple(newState.stones)) in self.visited and newState.getCost() >= self.visited[(newState.aresPos, tuple(newState.stones))]:
                     continue
-                heappush(queue, (self.heuristic(newState), newState))
-                self.visited.add((newState.aresPos, tuple(newState.stones)))
+                heappush(queue, (self.heuristic(newState) + initialState.getCost(), newState))
+                self.visited[(newState.aresPos, tuple(newState.stones))] = newState.getCost()
 
         # Stop the timer and memory tracker
         endTime = time.time()
