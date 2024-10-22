@@ -39,6 +39,7 @@ class Maze:
                     weightIndex += 1
                 elif cell == '.':
                     state.switches.append((i, j)) 
+        return state
 
     def search(self, filename: str, algName: str, stateList: list):
         # Create an instance of State class

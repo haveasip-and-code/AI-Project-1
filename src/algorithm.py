@@ -26,10 +26,10 @@ class Algorithm:
             file.write(self.algName + "\n")
             if (self.goal == None):
                 file.write("Steps: 0, ")
-                file.write("Weight: 0, ")
+                file.write("Cost: 0, ")
             else:
                 file.write("Steps: " + str(self.goal.getSteps()) + ", ")
-                file.write("Weight: " + str(self.goal.getCost()) + ", ")
+                file.write("Cost: " + str(self.goal.getCost()) + ", ")
 
 
             file.write("Nodes: " + str(len(self.visited)) + ", ")

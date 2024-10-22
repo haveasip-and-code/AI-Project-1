@@ -8,16 +8,13 @@ class Aster(Algorithm):
     def __init__(self, algName):
         super().__init__(algName)
 
-    def __lt__(self, other):
-        return self.g < other.g
-
     def manhattan_distance(self, point1, point2):
         x1, y1 = point1
         x2, y2 = point2
         return abs(x1 - x2) + abs(y1 - y2)
 
     def heuristic(self, state):
-        h = 0
+        h = 2**31 - 1
         # For each stone, calculate its weighted distance to the nearest switch
         for stone_idx, (x, y, weight) in enumerate(state.stones):
             for switch in state.switches:
