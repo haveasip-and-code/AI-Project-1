@@ -101,13 +101,33 @@ class Window:
                     # self.canvas.create_oval(x1, y1, x2-10, y2-10, fill="blue", outline="blue")
                     for x, y, weight in stones:
                         if (i, j) == (x, y):
-                            self.canvas.create_text(x1 + 35, y1 + 35, text=str(weight), fill="black", font=("Arial", 24))
+                            center_x = (x1 + x2 - 10) / 2
+                            center_y = (y1 + y2 - 10) / 2
+
+                            stone_width = x2 - x1 - 10
+                            stone_height = y2 - y1 - 10
+
+                            # Set the font size as a fraction of the stone's height (adjust as needed)
+                            font_size = int(stone_height * 0.25)
+
+                            # Create the text with the calculated font size and center position
+                            self.canvas.create_text(center_x, center_y, text=str(weight), fill="black", font=("Arial", font_size))
                             break
                 elif cell == '*':
                     self.canvas.create_image(x1, y1, image=self.finish, anchor='nw')
                     for x, y, weight in stones:
                         if (i, j) == (x, y):
-                            self.canvas.create_text(x1+10, y1+10, text=str(weight), fill="black")
+                            center_x = (x1 + x2) / 2
+                            center_y = (y1 + y2) / 2
+                            
+                            switch_width = x2 - x1
+                            switch_height = y2 - y1
+
+                            # Set the font size as a fraction of the stone's height (adjust as needed)
+                            font_size = int(switch_height * 0.25)
+
+                            # Create the text with the calculated font size and center position
+                            self.canvas.create_text(center_x, center_y, text=str(weight), fill="black", font=("Arial", font_size))
                             break
 
         self.master.update_idletasks()
