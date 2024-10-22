@@ -8,9 +8,6 @@ class Aster(Algorithm):
     def __init__(self, algName):
         super().__init__(algName)
 
-    def __lt__(self, other):
-        return self.g < other.g
-
     def manhattan_distance(self, point1, point2):
         x1, y1 = point1
         x2, y2 = point2
