@@ -2,6 +2,7 @@ from mazeSolverContext import MazeSolverContext
 from bfs import BFS
 from ucs import UCS
 from state import State
+from aster import Aster
 
 class Maze:
     def __init__(self):
@@ -38,7 +39,7 @@ class Maze:
     def search(self, filename: str, algName: str, stateList: list):
         # Create an instance of State class
         initial = State()
-        
+
         # Load input file
         self.loadInput(filename, initial)
 
@@ -49,9 +50,8 @@ class Maze:
         #    self._mazeSolverContext.setStrategy(DFS(algName))
         elif algName == "UCS":
             self._mazeSolverContext.setStrategy(UCS(algName))
-
-        # elif algName == "A*":
-        #     self._mazeSolverContext.setStrategy(Aster(algName))
+        elif algName == "A*":
+            self._mazeSolverContext.setStrategy(Aster(algName))
         
         self._mazeSolverContext.solveMaze(initial, stateList, self.input)
 

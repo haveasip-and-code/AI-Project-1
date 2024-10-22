@@ -10,7 +10,7 @@ class Algorithm:
         self.algName = algName
 
     @abstractmethod
-    def solve(self, state) -> None:
+    def solve(self, state):
         pass
 
     def tracePath(self, stateList) -> None:
