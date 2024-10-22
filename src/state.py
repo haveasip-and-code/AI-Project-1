@@ -8,10 +8,10 @@ class State:
         self.cost = cost
         self.path = path
         self.parent = parent
-        
+
     def __lt__(self, other):
         return self.getCost() < other.getCost()
-    
+      
     def checkGoalState(self):
         for (x, y, weight) in self.stones:
             if (x,y) not in self.switches:
@@ -53,14 +53,23 @@ class State:
                     continue
                 else:
                     new_grid[i][j] = ' '
+
         for x, y, weight in new_stones:
             new_grid[x][y] = '$'
+
         new_grid[new_pos[0]][new_pos[1]] = '@'
+
         for x, y in self.switches:
             new_grid[x][y] = '.'
+            
         for x, y, weight in new_stones:
             if (x, y) in self.switches:
                 new_grid[x][y] = '*'
+        
+        for x, y in self.switches:
+            if new_pos == (x, y):
+                new_grid[x][y] = '+'
+                
         new_grid = tuple(tuple(row) for row in new_grid)
         return new_grid
     

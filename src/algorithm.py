@@ -20,23 +20,27 @@ class Algorithm:
 
     def displayStats(self, input_file: str) -> None:
         # Write the stats to the output file
-        fileName = "../output/" + input_file[11:]
+        fileName = "output/output" + input_file[11:]
         with open(fileName, "a") as file:
             file.write(self.algName + "\n")
-            file.write("Steps: " + str(self.goal.getSteps()) + ", ")
-            file.write("Weight: " + str(self.goal.getWeight()) + ", ")
+            if (self.goal == None):
+                file.write("Steps: 0, ")
+                file.write("Weight: 0, ")
+            else:
+                file.write("Steps: " + str(self.goal.getSteps()) + ", ")
+                file.write("Weight: " + str(self.goal.getWeight()) + ", ")
+
 
             file.write("Nodes: " + str(len(self.visited)) + ", ")
             file.write("Time (ms): " + str(self.time) + ", ")
             file.write("Memory (MB): " + str(self.memory) + "\n")
 
         # Write the path to the output file
-        if self.goal.getSteps() > 0:
+
+        if self.goal != None:
             with open(fileName, "a") as file:
                 file.write(str(self.goal.getPath()) + "\n")
         else:
             with open(fileName, "a") as file:
                 file.write("No solution found\n")
-
-
 
