@@ -4,3 +4,21 @@ uLulDrrRRRRRRurD
 A*
 Steps: 25, Weight: 430, Nodes: 27780, Time (ms): 3093.806743621826, Memory (MB): 9383.5244140625
 uulDldRRRRRRRRlllulLLLulD
+A*
+Steps: 30, Cost: 435, Nodes: 4069, Time (ms): 426.4078140258789, Memory (MB): 4894.2958984375
+rruLulDrdLLruulldRurDldRRRRRRR
+A*
+Steps: 30, Cost: 435, Nodes: 4069, Time (ms): 432.59716033935547, Memory (MB): 4304.2255859375
+rruLulDrdLLruulldRurDldRRRRRRR
+A*
+Steps: 30, Cost: 435, Nodes: 4069, Time (ms): 416.7490005493164, Memory (MB): 4896.4755859375
+rruLulDrdLLruulldRurDldRRRRRRR
+A*
+Steps: 30, Cost: 435, Nodes: 4069, Time (ms): 418.7281131744385, Memory (MB): 4304.2255859375
+rruLulDrdLLruulldRurDldRRRRRRR
+A*
+Steps: 30, Cost: 435, Nodes: 4069, Time (ms): 427.00791358947754, Memory (MB): 4304.2255859375
+rruLulDrdLLruulldRurDldRRRRRRR
+A*
+Steps: 30, Cost: 435, Nodes: 4069, Time (ms): 411.607027053833, Memory (MB): 4304.2255859375
+rruLulDrdLLruulldRurDldRRRRRRR
