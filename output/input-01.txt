@@ -22,3 +22,9 @@ uLulDrrRRRRRRurD
 BFS
 Steps: 16, Weight: 695, Nodes: 12015, Time (ms): 836.4129066467285, Memory (MB): 11300.7919921875
 uLulDrrRRRRRRurD
+A*
+Steps: 24, Weight: 893, Nodes: 446, Time (ms): 42.01102256774902, Memory (MB): 326.033203125
+uLrurDrdLullulDrdRRRRRRR
+A*
+Steps: 24, Weight: 893, Nodes: 446, Time (ms): 42.38319396972656, Memory (MB): 326.525390625
+uLrurDrdLullulDrdRRRRRRR
