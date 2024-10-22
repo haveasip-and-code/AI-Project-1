@@ -109,6 +109,9 @@ class State:
         if self == None:
             return (0,0)
         return self.aresPos
+
+    def getParent(self):
+        return self.parent
     
     def print_grid(self):
         for row in self.grid:

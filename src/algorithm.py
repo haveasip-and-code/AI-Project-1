@@ -3,13 +3,14 @@ from abc import abstractmethod
 class Algorithm:
     def __init__(self, algName: str):
         self.visited = {}
+
         self.time = 0
         self.memory = 0
         self.goal = None
         self.algName = algName
 
     @abstractmethod
-    def solve(self, state) -> None:
+    def solve(self, state):
         pass
 
     def tracePath(self, stateList) -> None:
