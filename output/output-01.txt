@@ -76,3 +76,9 @@ uLulDrrRRRRRRurD
 BFS
 Steps: 16, Cost: 711, Nodes: 12015, Time (ms): 3331.437587738037, Memory (MB): 11366.1279296875
 uLulDrrRRRRRRurD
+BFS
+Steps: 16, Cost: 711, Nodes: 12015, Time (ms): 912.3179912567139, Memory (MB): 11364.8779296875
+uLulDrrRRRRRRurD
+A*
+Steps: 30, Cost: 435, Nodes: 4069, Time (ms): 395.0459957122803, Memory (MB): 4304.2255859375
+rruLulDrdLLruulldRurDldRRRRRRR

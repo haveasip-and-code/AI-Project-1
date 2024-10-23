@@ -108,7 +108,7 @@ class Window:
                             stone_height = y2 - y1 - 10
 
                             # Set the font size as a fraction of the stone's height (adjust as needed)
-                            font_size = int(stone_height * 0.25)
+                            font_size = int(stone_height * 0.4)
 
                             # Create the text with the calculated font size and center position
                             self.canvas.create_text(center_x, center_y, text=str(weight), fill="black", font=("Arial", font_size))
@@ -124,7 +124,7 @@ class Window:
                             switch_height = y2 - y1
 
                             # Set the font size as a fraction of the stone's height (adjust as needed)
-                            font_size = int(switch_height * 0.25)
+                            font_size = int(switch_height * 0.4)
 
                             # Create the text with the calculated font size and center position
                             self.canvas.create_text(center_x, center_y, text=str(weight), fill="black", font=("Arial", font_size))
