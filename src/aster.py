@@ -18,7 +18,7 @@ class Aster(Algorithm):
         # For each stone, calculate its weighted distance to the nearest switch
         for stone_idx, (x, y, weight) in enumerate(state.stones):
             for switch in state.switches:
-                h = min(h, self.manhattan_distance(state.aresPos, (x, y)) + self.manhattan_distance((x, y), switch) * weight)
+                h = min(h, self.manhattan_distance(state.aresPos, (x, y)) + self.manhattan_distance((x, y), switch) * (weight + 1))
         return h
 
     def solve(self, state):

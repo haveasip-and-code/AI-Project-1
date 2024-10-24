@@ -4,3 +4,12 @@ uLulDrrrrrurRRurDD
 A*
 Steps: 25, Cost: 53, Nodes: 6410, Time (ms): 606.658935546875, Memory (MB): 4095.759765625
 uulDrurrrrRRurDDlldlllllL
+UCS
+Steps: 18, Cost: 46, Nodes: 10091, Time (ms): 869.8780536651611, Memory (MB): 6217.3125
+uLulDrrrrrurRRurDD
+A*
+Steps: 34, Cost: 74, Nodes: 3357, Time (ms): 420.4821586608887, Memory (MB): 4600.640625
+uurrrrRurDDrdLLLLLLulLulDrdRRRRRRR
+A*
+Steps: 40, Cost: 159, Nodes: 2009, Time (ms): 209.81097221374512, Memory (MB): 1845.7998046875
+uurrrrRurDDrdLLLLLLLLruulldRurDldRRRRRRR
