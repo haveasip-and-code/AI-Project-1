@@ -1,9 +1,10 @@
 import tkinter as tk
-from tkinter import messagebox, PhotoImage
+from tkinter import messagebox, PhotoImage, Toplevel, Label
 from PIL import Image, ImageTk
 import state
 import algorithm as algorithm
 from maze import Maze
+import threading
 
 class Window:
     def __init__(self, master):
@@ -21,8 +22,8 @@ class Window:
         self.canvas = tk.Canvas(self.master, width = self.width, height = self.height, background="black")
         self.canvas.grid(row=2,column=0, sticky=tk.S)
 
-        self.stepsLabel = tk.Label(self.master, text = '0', font = ('Arial', 20))
-        self.costLabel = tk.Label(self.master, text = '0', font = ('Arial', 20))
+        self.stepsLabel = tk.Label(self.master, text = 'Steps: 0', font = ('Arial', 20))
+        self.costLabel = tk.Label(self.master, text = 'Cost: 0', font = ('Arial', 20))
         self.stepsLabel.grid(row=4,column=0,sticky=tk.W)
         self.costLabel.grid(row=4,column=1,sticky=tk.W)
         
@@ -42,8 +43,31 @@ class Window:
         self.algMenu = tk.OptionMenu(self.master, self.algOption, *algOptions)
         self.algMenu.grid(row=1,column=0,sticky=tk.SW)
 
-        # self.master.resizable(width=False, height=False)
-       
+    def show_loading_screen(self):
+        self.loading_window = Toplevel(self.master)
+        self.loading_window.title("Loading...")
+        Label(self.loading_window, text="Finding solution, please wait...").pack(pady=10, padx=20)
+        self.loading_window.geometry("300x100")
+        self.loading_window.grab_set()
+
+    
+    def hide_loading_screen(self):
+    # Hide the loading screen when done
+        if self.loading_window:
+            self.loading_window.destroy()
+
+    def run_search(self, input_file, algorithm):
+        self.maze.search(input_file, algorithm, self.stateList)  # Run the search
+        self.hide_loading_screen()  # Hide the loading screen once search is complete
+
+        # Check the result and show the appropriate message
+        if len(self.stateList) > 0:
+
+            tk.messagebox.showinfo("Solution found", "Solution found")
+            self.master.after(2000, self.drawStates, len(self.stateList) - 2) 
+        else:
+            tk.messagebox.showinfo("No solution found", "No solution found")
+            
     def start(self):
         self.stateList = []
         algorithm = self.algOption.get()
@@ -51,13 +75,18 @@ class Window:
         self.initial = state.State()
         self.initial = self.maze.loadInput(input_file, self.initial)
         self.drawGrid(self.initial.grid, self.initial.stones)
-        self.maze.search(input_file, algorithm, self.stateList)
+        self.show_loading_screen()
+
+        search_thread = threading.Thread(target=self.run_search, args=(input_file, algorithm))
+        search_thread.start()
+        # self.maze.search(input_file, algorithm, self.stateList)
+
         # Start drawing the states
-        if (len(self.stateList) > 0):
-            tk.messagebox.showinfo("Solution found", "Solution found")
-            self.master.after(3000, self.drawStates, len(self.stateList) - 2) 
-        else:
-            tk.messagebox.showinfo("No solution found", "No solution found")
+        # if (len(self.stateList) > 0):
+        #     tk.messagebox.showinfo("Solution found", "Solution found")
+        #     self.master.after(3000, self.drawStates, len(self.stateList) - 2) 
+        # else:
+        #     tk.messagebox.showinfo("No solution found", "No solution found")
 
     def drawGrid(self, grid, stones):
         self.canvas.delete("all")
@@ -135,8 +164,8 @@ class Window:
     def drawStates(self, index):
         if index >= 0:
             self.drawGrid(self.stateList[index].grid, self.stateList[index].stones)
-            self.stepsLabel.config(text = str(self.stateList[index].getSteps()))
-            self.costLabel.config(text = str(self.stateList[index].getCost()))
+            self.stepsLabel.config(text = "Steps: " + str(self.stateList[index].getSteps()))
+            self.costLabel.config(text = "Cost: " + str(self.stateList[index].getCost()))
             # Schedule the next state after 1 second
             self.master.after(1000, self.drawStates, index - 1)
     
