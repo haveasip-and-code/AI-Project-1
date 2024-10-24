@@ -13,13 +13,38 @@ class Aster(Algorithm):
         x2, y2 = point2
         return abs(x1 - x2) + abs(y1 - y2)
 
+    def calculate_min_distance(self, state, stone_idx, used_switches, current_distance):
+        # Base case: If all stones have been assigned to a switch
+        if stone_idx == len(state.stones):
+            return current_distance
+
+        min_distance = 2**31 - 1  # Initialize with a large value
+        
+        # Try assigning the current stone to each available switch
+        for i, switch in enumerate(state.switches):
+            if not used_switches[i]:  # If the switch has not been assigned
+                stone_position = state.stones[stone_idx][:2]
+                stone_weight = state.stones[stone_idx][2]
+                # Calculate distances
+                dist_ares_to_stone = self.manhattan_distance(state.aresPos, stone_position)
+                dist_stone_to_switch = self.manhattan_distance(stone_position, switch) * (stone_weight + 1)
+                total_distance = dist_ares_to_stone + dist_stone_to_switch
+                
+                # Mark this switch as used
+                used_switches[i] = True
+                
+                # Recursively assign the remaining stones
+                min_distance = min(min_distance, self.calculate_min_distance(state, stone_idx + 1, used_switches, current_distance + total_distance))
+                
+                # Backtrack: Unmark the switch to try other pairings
+                used_switches[i] = False
+    
+        return min_distance
+
     def heuristic(self, state):
-        h = 2**31 - 1
-        # For each stone, calculate its weighted distance to the nearest switch
-        for stone_idx, (x, y, weight) in enumerate(state.stones):
-            for switch in state.switches:
-                h = min(h, self.manhattan_distance(state.aresPos, (x, y)) + self.manhattan_distance((x, y), switch) * (weight + 1))
-        return h
+        used_switches = [False] * len(state.switches)  # Track which switches have been assigned
+        return self.calculate_min_distance(state, 0, used_switches, 0)
+
 
     def solve(self, state):
         # Start the timer and memory tracker
