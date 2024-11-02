@@ -21,7 +21,7 @@ class Window:
 
         self.canvas = tk.Canvas(self.master, width = self.width, height = self.height, background="black")
         self.canvas.grid(row=2,column=0, sticky=tk.S)
-
+    
         self.stepsLabel = tk.Label(self.master, text = 'Steps: 0', font = ('Arial', 20))
         self.costLabel = tk.Label(self.master, text = 'Cost: 0', font = ('Arial', 20))
         self.stepsLabel.grid(row=4,column=0,sticky=tk.W)
@@ -32,6 +32,7 @@ class Window:
         self.inputOption = tk.StringVar(self.master)
         self.inputOption.set(inputOptions[0])
         self.inputMenu = tk.OptionMenu(self.master, self.inputOption, *inputOptions)
+        self.inputMenu.config(bg='#fad581')
         self.inputMenu.grid(row=0,column=0,sticky=tk.W)
 
         self.startButton = tk.Button(self.master, text='Start', relief="raised",command=self.start)
@@ -41,6 +42,7 @@ class Window:
         self.algOption = tk.StringVar(self.master)
         self.algOption.set(algOptions[0])
         self.algMenu = tk.OptionMenu(self.master, self.algOption, *algOptions)
+        self.algMenu.config(bg='#fad581')
         self.algMenu.grid(row=1,column=0,sticky=tk.SW)
 
     def show_loading_screen(self):
@@ -115,8 +117,8 @@ class Window:
                 x2 = x1 + self.cellWidth
                 y2 = y1 + self.cellHeight
                 if cell == '+':
-                    self.canvas.create_rectangle(x1, y1, x2, y2, fill="yellow", outline="yellow")
-                    self.canvas.create_rectangle(x1, y1, x2-10, y2-10, fill="white", outline="white")
+                    self.canvas.create_image(x1, y1, image=self.switch, anchor='nw')
+                    self.canvas.create_image(x1, y1, image=self.ares, anchor='nw')
                 if cell == '#':
                     self.canvas.create_rectangle(x1, y1, x2, y2, fill="brown", outline="black")
                 elif cell == '.':
