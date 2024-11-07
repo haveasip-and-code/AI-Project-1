@@ -43,7 +43,7 @@ class DFS(Algorithm):
                     current, peak = tracemalloc.get_traced_memory()
                     tracemalloc.stop()
                     self.time = (endTime - startTime) * 1000  # ms
-                    self.memory = peak / 1024
+                    self.memory = peak / (1024*1024)
                     return self.goal
 
                 if (newState.aresPos, tuple(newState.stones)) in self.visited:
