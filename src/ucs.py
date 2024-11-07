@@ -28,7 +28,7 @@ class UCS(Algorithm):
                 current, peak = tracemalloc.get_traced_memory()
                 tracemalloc.stop()
                 self.time = (endTime - startTime) * 1000  # ms
-                self.memory = peak / 1024
+                self.memory = peak / (1024*1024)
                 self.goal = currentState
                 return self.goal
             for nextState in currentState.expandState():
@@ -39,6 +39,6 @@ class UCS(Algorithm):
         current, peak = tracemalloc.get_traced_memory()
         tracemalloc.stop()
         self.time = (endTime - startTime) * 1000  # ms
-        self.memory = peak / 1024
+        self.memory = peak / (1024*1024)
         self.goal = None
         return None
