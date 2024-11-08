@@ -23,7 +23,7 @@ class DFS(Algorithm):
             current, peak = tracemalloc.get_traced_memory()
             tracemalloc.stop()
             self.time = (endTime - startTime) * 1000  # ms
-            self.memory = peak / 1024
+            self.memory = peak / (1024*1024)
             return self.goal
         
         # Initialize the queue and add the initial state to it
@@ -43,7 +43,7 @@ class DFS(Algorithm):
                     current, peak = tracemalloc.get_traced_memory()
                     tracemalloc.stop()
                     self.time = (endTime - startTime) * 1000  # ms
-                    self.memory = peak / 1024
+                    self.memory = peak / (1024*1024)
                     return self.goal
 
                 if (newState.aresPos, tuple(newState.stones)) in self.visited:
@@ -58,7 +58,7 @@ class DFS(Algorithm):
         current, peak = tracemalloc.get_traced_memory()
         tracemalloc.stop()
         self.time = (endTime - startTime) * 1000  # ms
-        self.memory = peak / 1024
+        self.memory = peak / (1024*1024)
         self.goal = None
         return None
         

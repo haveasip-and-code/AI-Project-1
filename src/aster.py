@@ -61,7 +61,7 @@ class Aster(Algorithm):
             current, peak = tracemalloc.get_traced_memory()
             tracemalloc.stop()
             self.time = (endTime - startTime) * 1000  # ms
-            self.memory = peak / 1024
+            self.memory = peak / (1024*1024)
             return self.goal
         
         # Initialize the priority queue and add the initial state to it
@@ -80,7 +80,7 @@ class Aster(Algorithm):
                     current, peak = tracemalloc.get_traced_memory()
                     tracemalloc.stop()
                     self.time = (endTime - startTime) * 1000
-                    self.memory = peak / 1024
+                    self.memory = peak / (1024*1024)
                     return self.goal
                 
                 # Check if the state has been visited before
@@ -94,7 +94,7 @@ class Aster(Algorithm):
         current, peak = tracemalloc.get_traced_memory()
         tracemalloc.stop()
         self.time = (endTime - startTime) * 1000
-        self.memory = peak / 1024
+        self.memory = peak / (1024*1024)
         self.goal = None
         return None
                 
