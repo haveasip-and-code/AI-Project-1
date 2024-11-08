@@ -1,3 +1,0 @@
-BFS
-Steps: 43, Cost: 619, Nodes: 259756, Time (ms): 24367.15793609619, Memory (MB): 95920.8974609375
-ldRRlldRRRUruRRRdrUllldllluRRRRRdrruuLDlluR
