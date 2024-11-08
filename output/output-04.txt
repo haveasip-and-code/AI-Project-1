@@ -1,0 +1,12 @@
+BFS
+Steps: 4, Cost: 7, Nodes: 11, Time (ms): 0.49114227294921875, Memory (MB): 0.009131431579589844
+rrUL
+DFS
+Steps: 4, Cost: 7, Nodes: 7, Time (ms): 0.37407875061035156, Memory (MB): 0.004311561584472656
+rrUL
+UCS
+Steps: 4, Cost: 7, Nodes: 14, Time (ms): 0.8320808410644531, Memory (MB): 0.005669593811035156
+rrUL
+A*
+Steps: 4, Cost: 7, Nodes: 7, Time (ms): 0.3371238708496094, Memory (MB): 0.0036249160766601562
+rrUL

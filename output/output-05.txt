@@ -1,0 +1,12 @@
+BFS
+Steps: 18, Cost: 46, Nodes: 4758, Time (ms): 321.84386253356934, Memory (MB): 4.500585556030273
+uLulDurrrrrrRRurDD
+DFS
+Steps: 436, Cost: 690, Nodes: 8954, Time (ms): 1222.8610515594482, Memory (MB): 2.2810916900634766
+rrrrrrrruullLrrrddlllllllllluRRRRllluurrrrdRRRllllllllddrrrrrrrrrruuLrddlllllllllluurrrrrDldRRRRlllllllluurrrrrrrRdrrdLruuLrddlLrruulLrrddllLrrruullLrrrddlllLrrrruulllLrrrrddllllLrrrrruullllLrrrrrddlllllLrrrrrruulllllLrrrrrrddllllllLrrrrrrruullllllLrrrrrrrddlllllllLrrrrrrrruulllllllLrrrrrrrrddllllllllLrrrrrrrrruullllllllulDldRRRRllluurrrrdrrrrrddlllllUluRRRRlllllllddrrrrrrrrruuLLLLLrrrrrddllllllllluurrurDrdLruulldDrruulllldddrRRRRRR
+UCS
+Steps: 18, Cost: 46, Nodes: 10091, Time (ms): 870.6128597259521, Memory (MB): 5.4585723876953125
+uLulDrrrrrurRRurDD
+A*
+Steps: 18, Cost: 46, Nodes: 119, Time (ms): 8.697032928466797, Memory (MB): 0.029550552368164062
+uLulDurrrrrrRRurDD
