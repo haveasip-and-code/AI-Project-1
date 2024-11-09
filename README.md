@@ -1,6 +1,6 @@
 # AI-Project-1
-This project apply global search: DFS, BFS, UCS, A* in game Ares's Adventure. This demonstrates the strengths and weaknesses of each search type.
-## 1.Install dependency
+This project applies global search algorithms—DFS, BFS, UCS, and A*—in the game Ares's Adventure. It demonstrates the strengths and weaknesses of each search method.
+## 1. Install dependency
 ```bash
 pip install -r requirements.txt
 ```
